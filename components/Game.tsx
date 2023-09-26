@@ -11,6 +11,8 @@ export default function Game({ }: Props) {
         <h3 className='text-[50px] mx-[3%] mt-[10px] text-center font-bold text-white'>{gameOverLine}</h3>
       </div> */}
 
+      {/* fix the size of the screen, it doesn't show in my laptop */}
+
       <div className='flex'>
         <div className='flex text-center ml-[12%] mt-[-4%] mb-[-4%]'>
           <div className='w-[60px] h-[60px] mr-[7%] text-center'>
