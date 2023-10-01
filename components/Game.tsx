@@ -4,7 +4,7 @@ type Props = {}
 
 export default function Game({ }: Props) {
   const [gameOver, setGameOver] = useState(false)
-  const [gameOverLine, setGameOverLine] = useState('Hellowwww')
+  const [gameOverLine, setGameOverLine] = useState('Well Done Kiddo!!!')
   return (
     <>
       {/* <div className={`${gameOver ? 'visible' : 'hidden'} h-[100px] w-[600px] text-white z-1 mx-[20%] my-[35%] absolute bg-[rgba(17, 40, 71, 0.7) rounded-2xl shadow-md backdrop-blur-[6px] border border-[rgba(244, 248, 255, 0.52)]`}>
