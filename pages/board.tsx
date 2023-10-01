@@ -11,8 +11,6 @@ export default function Board({ }: Props) {
   const router = useRouter()
   const { query } = router
 
-  
-
   const [gs, setGS] = useState<GameState>(new GameState(initialBoard))
   const [board, setBoard] = useState(gs.board)
   const [knowledge, setKnowledge] = useState(gs.knowledge)
