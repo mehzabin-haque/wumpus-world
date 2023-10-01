@@ -151,13 +151,25 @@ export class GameState {
         if (this.board[row][col] === 'W') {
           wumpusCount++
           if (col != 0)
-            this.board[row][col - 1] = 'stench'
+            if (this.board[row][col - 1] == 'breeze')
+              this.board[row][col - 1] = 'stenchbreeze'
+            else
+              this.board[row][col - 1] = 'stench'
           if (col != 9)
-            this.board[row][col + 1] = 'stench'
+            if (this.board[row][col + 1] == 'breeze')
+              this.board[row][col + 1] = 'stenchbreeze'
+            else
+              this.board[row][col + 1] = 'stench'
           if (row != 0)
-            this.board[row - 1][col] = 'stench'
+            if (this.board[row - 1][col] == 'breeze')
+              this.board[row - 1][col] = 'stenchbreeze'
+            else
+              this.board[row - 1][col] = 'stench'
           if (row != 9)
-            this.board[row + 1][col] = 'stench'
+            if (this.board[row + 1][col] == 'breeze')
+              this.board[row + 1][col] = 'stenchbreeze'
+            else
+              this.board[row + 1][col] = 'stench'
         }
         if (this.board[row][col] === 'P') {
           pitCount++
