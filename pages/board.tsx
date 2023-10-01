@@ -17,7 +17,7 @@ export default function Board({ }: Props) {
     ['P', '-', '-', '-', '-', '-', '-', 'W', '-', '-'],
     ['-', '-', '-', 'P', '-', '-', 'P', '-', '-', '-'],
     ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
-  ]
+  ]  //
 
   const [gs, setGS] = useState<GameState>(new GameState(initialBoard))
   const [board, setBoard] = useState(gs.board)
