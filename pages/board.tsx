@@ -23,47 +23,77 @@ export default function Board({ }: Props) {
   const [board, setBoard] = useState(gs.board)
   const [knowledge, setKnowledge] = useState(gs.knowledge)
 
-  useEffect(() => {
-    setBoard(gs.board)
-    setKnowledge(gs.knowledge)
-    setInterval(gs.move, 200);
-  }, [gs])
+  const move = () => {
+    let mv = gs.move();
+    console.log(mv)
+    if (mv == gs.UP) {
+      gs.agentIndex.row--;
+      gs.point--;
+    }
+    else if (mv == gs.DOWN) {
+      gs.agentIndex.row++;
+      gs.point--;
+    }
+    else if (mv == gs.LEFT) {
+      gs.agentIndex.column--;
+      gs.point--;
+    }
+    else if (mv == gs.RIGHT) {
+      gs.agentIndex.column++;
+      gs.point--;
+    }
+    console.log(gs.agentIndex)
+  }
 
-  return (
-    <>
-      <div className='h-screen flex space-x-16 items-center justify-center bg-[#93032E]'>
-        <div className='bg-[#93032E] text-center pb-16'>
-          <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Cheat</p>
-          {initialBoard.map((row, rowIndex) => (
-            <div className={`flex`} key={rowIndex}>
-              {row.map((piece, colIndex) => (
-                <Cheat
-                  piece={piece}
-                  row={rowIndex}
-                  col={colIndex}
-                  agentPosition={gs.agentIndex}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
-        <div className='bg-[#93032E] text-center pb-16'>
-          <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Current Game</p>
-          {board.map((row, rowIndex) => (
-            <div className={`flex`} key={rowIndex}>
-              {row.map((piece, colIndex) => (
-                <Cell
-                  piece={piece}
-                  row={rowIndex}
-                  col={colIndex}
-                  agentPosition={gs.agentIndex}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     move()
+  //     setBoard(gs.board)
+  //     setKnowledge(gs.knowledge)
+  //     renderBoard()
+  //   }, 1000)
 
-  )
+  //   return () => clearInterval(interval)
+  // }, [gs])
+
+  const renderBoard = () => {
+    return (
+      <>
+        <div className='h-screen flex space-x-16 items-center justify-center bg-[#93032E]'>
+          <div className='bg-[#93032E] text-center pb-16'>
+            <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Cheat</p>
+            {initialBoard.map((row, rowIndex) => (
+              <div className={`flex`} key={rowIndex}>
+                {row.map((piece, colIndex) => (
+                  <Cheat
+                    piece={piece}
+                    row={rowIndex}
+                    col={colIndex}
+                    agentPosition={gs.agentIndex}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+          <div className='bg-[#93032E] text-center pb-16'>
+            <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Current Game</p>
+            {board.map((row, rowIndex) => (
+              <div className={`flex`} key={rowIndex}>
+                {row.map((piece, colIndex) => (
+                  <Cell
+                    piece={piece}
+                    row={rowIndex}
+                    col={colIndex}
+                    agentPosition={gs.agentIndex}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </>
+    )
+  }
+
+  return renderBoard()
 }

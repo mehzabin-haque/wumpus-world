@@ -33,7 +33,7 @@ export default function Cell({ piece, row, col, agentPosition }: Props) {
         }`}
     >
       {((piece !== 'U') && (agentPosition.row !== row) && (agentPosition.column !== col)) && <Image src={`/images/${getStatus(piece)}.png`} alt={''} width={64} height={64} />}
-      {((piece !== 'U') && (agentPosition.row === row) && (agentPosition.column === col)) && <Image src={`/images/${(piece==='G') ? 'win' : getStatus(piece)}.png`} alt={''} width={64} height={64} />}
+      {((agentPosition.row === row) && (agentPosition.column === col)) && <Image src={`/images/${(piece==='G') ? 'win' : getStatus(piece)}.png`} alt={''} width={64} height={64} />}
     </div>
   )
 }
