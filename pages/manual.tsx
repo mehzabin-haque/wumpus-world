@@ -1,8 +1,9 @@
 import React from 'react';
-
+import Game from '@/components/GameNew';
 const ManualCard = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      {/* <Game></Game> */}
     <div className="bg-white rounded-lg shadow-xl p-6 mx-auto my-8 w-4/5 ">
       <h5 className="text-2xl font-bold text-gray-900 mb-4 font-serif">Wumpus-World Game Manual</h5>
       <div className="text-gray-700">
