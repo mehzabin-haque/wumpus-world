@@ -22,7 +22,7 @@ export default function Cheat({ piece, row, col, agentPosition }: Props) {
 
   return (
     <div data-row={row} data-col={col}
-      className={`square h-8 w-8 text-6xl flex items-center justify-center outline outline-[#171c28] bg-[#485a7f]
+      className={`square h-8 w-8 text-6xl flex items-center justify-center outline outline-[#171c28] bg-[#2c8da8]
         }`}
     >
       {((piece !== 'U') && (agentPosition.row !== row) && (agentPosition.column !== col)) && <Image src={`/images/${getStatus(piece)}.png`} alt={''} width={64} height={64} />}
