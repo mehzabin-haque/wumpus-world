@@ -10,7 +10,7 @@ export default function Play({ }: Props) {
   const [pit, setPit] = useState(2)
   const [gold, setGold] = useState(1)
   const [started, setStarted] = useState(false)
-  const [initialBoard, setInitialBoard] = useState<(string)[][]>([['']])
+  const [initialBoard, setInitialBoard] = useState<(string)[][]>([...inputBoard])
 
   let inputBoard: (string)[][] = [
     ['-', '-', '-', 'P', '-', '-', 'P', '-', '-', '-'],
@@ -47,7 +47,8 @@ export default function Play({ }: Props) {
   }
 
   return (
-    (started) ? <Board initialBoard={initialBoard} />
+    <div className='bg-[url("/images/background.gif")] bg-cover'>
+      (started) ? <Board initialBoard={initialBoard} />
       :
       <Settings
         wumpus={wumpus} changeWumpus={changeWumpus}
@@ -56,55 +57,74 @@ export default function Play({ }: Props) {
         handleButtonClick={handleButtonClick}
         handleFileInput={handleFileInput}
       />
+    </div>
   )
 }
 
 function generateRandomBoard(wumpusCount: number, pitCount: number, goldCount: number) {
-  let board: (string)[][] = [['']]
-  for(let i=0; i< wumpusCount; i++){
-    let val = Math.floor(Math.random()*100);
+  let board: (string)[][] = []
+  for (let i = 0; i < 10; i++) {
+    const row: string[] = [];
+    for (let j = 0; j < 10; j++) {
+      row.push('-');
+    }
+    board.push(row);
+  }
+
+  for (let i = 0; i < wumpusCount; i++) {
+    let val = Math.floor(Math.random() * 100);
     let col = val % 10;
     let row = Math.floor((val / 10) % 10);
-    if(col<2 && row <2){
+    console.log(row, col)
+    if (row === 9 && col === 0) {
+      i--;
+      continue;
+    }
+    if (col < 2 && row < 2) {
       i--
       continue;
     }
-    if(board[row][col]=='W' || board[row][col]=='P'){
+    if (board[row][col] == 'W' || board[row][col] == 'P') {
       i--
       continue;
     }
-    //// console.log(row, col)
     board[row][col] = 'W';
   }
-  for(var i=0; i< pitCount; i++){
-    
-    let val = Math.floor(Math.random()*100);
+
+  for (let i = 0; i < pitCount; i++) {
+    let val = Math.floor(Math.random() * 100);
     let col = val % 10;
     let row = Math.floor((val / 10) % 10);
-    if(row <2 && col <2){
+    if (row === 9 && col === 0) {
       i--;
       continue;
     }
-    //// console.log(row, col)
-    if(board[row][col]=='P' || board[row][col]=='W'){
-      i = i-1;
+    if (row < 2 && col < 2) {
+      i--;
       continue;
     }
+    if (board[row][col] == 'P' || board[row][col] == 'W') {
+      i = i - 1;
+      continue;
+    }
+
     board[row][col] = 'P';
   }
-  for(var i=0; i< goldCount; i++){
+  for (var i = 0; i < goldCount; i++) {
 
-    let val = Math.floor(Math.random()*100);
+    let val = Math.floor(Math.random() * 100);
     let col = val % 10;
     let row = Math.floor((val / 10) % 10);
-    if(row <2 && col<2){
+    if (row < 2 && col < 2) {
       i--;
       continue;
     }
-    if(board[row][col]=='W' || board[row][col]=='P'){
-     i--;
+    if (board[row][col] == 'W' || board[row][col] == 'P') {
+      i--;
       continue;
     }
-    board[row][col]+='G'
-  };
+    board[row][col] += 'G'
+  }
+
+  return board;
 }
