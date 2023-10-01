@@ -5,14 +5,11 @@ import React, { useEffect, useState } from 'react'
 import Modal from '@/components/Modal'
 import { useRouter } from 'next/router'
 
-type Props = {}
+type Props = {
+  initialBoard: (string)[][]
+}
 
-export default function Board({ }: Props) {
-  const router = useRouter()
-  const { query } = router
-
-  
-
+export default function Board({ initialBoard }: Props) {
   const [gs, setGS] = useState<GameState>(new GameState(initialBoard))
   const [board, setBoard] = useState(gs.board)
   const [knowledge, setKnowledge] = useState(gs.knowledge)
