@@ -60,7 +60,7 @@ export default function Board({ }: Props) {
     // You can split the content by newlines and then split each row into an array of characters.
     const rows = content.split('\n');
     const board = rows.map((row) => row.trim().split(''));
-
+    console.log(board);
     return board;
   };
 

@@ -8,12 +8,21 @@ import { useRouter } from 'next/router'
 type Props = {}
 
 export default function Board({ }: Props) {
-  const router = useRouter()
-  const { query } = router
-
+  let inputBoard: (string)[][] = [
+    ['-', '-', '-', 'P', '-', '-', 'P', '-', '-', '-'],
+    ['-', '-', 'W', '-', '-', '-', '-', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', 'P', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', 'P', '-', '-', '-', '-'],
+    ['-', '-', '-', 'G', '-', '-', '-', '-', '-', '-'],
+    ['W', '-', '-', '-', '-', '-', 'P', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+    ['P', '-', '-', '-', '-', '-', '-', 'W', '-', '-'],
+    ['-', '-', '-', 'P', '-', '-', 'P', '-', '-', '-'],
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
+  ]
   
 
-  const [gs, setGS] = useState<GameState>(new GameState(initialBoard))
+  const [gs, setGS] = useState<GameState>(new GameState(inputBoard))
   const [board, setBoard] = useState(gs.board)
   const [knowledge, setKnowledge] = useState(gs.knowledge)
   const [cboard, setCBoard] = useState(gs.cboard)

@@ -13,7 +13,7 @@ type Props = {
 
 export default function Settings({ wumpus, changeWumpus, pit, changePit, gold, changeGold, handleButtonClick, handleFileInput }: Props) {
   return (
-    <div className='bg-[#3faa98] h-screen flex flex-col items-center justify-center pb-32'>
+    <div className=' h-screen flex flex-col items-center justify-center pb-32'>
       <div className='text-6xl font-extrabold tracking-[2px]'>
         Game Settings
       </div>
@@ -35,7 +35,15 @@ export default function Settings({ wumpus, changeWumpus, pit, changePit, gold, c
         </div>
       </div>
       <div>
-          <button onClick={handleButtonClick} className='bg-white w-[320px] hover:bg-gray-300 py-2 rounded-full font-semibold text-2xl tracking-[1px]'>Start Game</button>
+        <button onClick={handleButtonClick} className='bg-white w-[320px] hover:bg-gray-300 py-2 rounded-full font-semibold text-2xl tracking-[1px]'>Start Game</button>
+      </div>
+      <div className='flex space-x-4'>
+        <hr className="h-px my-8 bg-black border-0 " />
+        <p>or</p>
+        <hr className="h-px my-8 bg-black border-0 " />
+      </div>
+      <div>
+        
       </div>
     </div>
   )
