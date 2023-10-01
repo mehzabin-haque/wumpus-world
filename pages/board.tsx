@@ -76,7 +76,7 @@ export default function Board({ }: Props) {
               </div>
             ))}
           </div>
-          <div className='bg-[#93032E] text-center pb-16'>
+          <div className='bg-[#2ca894] text-center pb-16'>
             <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Current Game</p>
             {board.map((row, rowIndex) => (
               <div className={`flex`} key={rowIndex}>
