@@ -59,8 +59,10 @@ export default function Board({ }: Props) {
   const renderBoard = () => {
     return (
       <>
-        <div className='h-screen flex space-x-16 items-center justify-center bg-[#93032E]'>
-          <div className='bg-[#93032E] text-center pb-16'>
+      {/* <div className='h-screen flex space-x-16 items-center justify-center bg-gradient-to-b from-purple-900 via-green-700 to-blue-900'> */}
+         
+        <div className='h-screen flex space-x-16 items-center justify-center bg-[#2ca894]'>
+          <div className='bg-[#2ca894] text-center pb-16'>
             <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Cheat</p>
             {initialBoard.map((row, rowIndex) => (
               <div className={`flex`} key={rowIndex}>
@@ -75,7 +77,7 @@ export default function Board({ }: Props) {
               </div>
             ))}
           </div>
-          <div className='bg-[#93032E] text-center pb-16'>
+          <div className='bg-[#2ca894] text-center pb-16'>
             <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Current Game</p>
             {board.map((row, rowIndex) => (
               <div className={`flex`} key={rowIndex}>
