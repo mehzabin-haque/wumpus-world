@@ -18,7 +18,7 @@ export default function Board({ }: Props) {
     ['-', '-', '-', 'P', '-', '-', 'P', '-', '-', '-'],
     ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
   ]
-  
+
   const [gs, setGS] = useState<GameState>(new GameState(initialBoard))
   const [board, setBoard] = useState(gs.board)
   const [knowledge, setKnowledge] = useState(gs.knowledge)
@@ -51,7 +51,7 @@ export default function Board({ }: Props) {
       setBoard([...gs.board])
       setKnowledge([...gs.knowledge])
     }, 500)
-    
+
     setTimeout(renderBoard, 0)
 
     return () => clearInterval(interval)
@@ -75,8 +75,18 @@ export default function Board({ }: Props) {
                 ))}
               </div>
             ))}
+            <div className='pt-8 text-xl font-bold text-white tracking-[1px] w-full flex flex-col items-start'>
+              <div className='pl-10 space-x-24'>
+                <span>Available Gold: {gs.goldCount}</span>
+                <span>Gold Collected: {gs.discoveredGold}</span>
+              </div>
+              <div className='pl-10 space-x-[84px]'>
+                <span>Wumpus Killed: {gs.wumpusKilled}</span>
+                <span>Point: {gs.point}</span>
+              </div>
+            </div>
           </div>
-          <div className='bg-[#2ca894] text-center pb-16'>
+          <div className='text-center pb-16'>
             <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Current Game</p>
             {board.map((row, rowIndex) => (
               <div className={`flex`} key={rowIndex}>
