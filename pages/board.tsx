@@ -2,6 +2,7 @@ import Cell from '@/components/Cell'
 import Cheat from '@/components/Cheat'
 import { GameState } from '@/utils/AI'
 import React, { useEffect, useState } from 'react'
+import Modal from '@/components/Modal'
 
 type Props = {}
 
@@ -23,6 +24,8 @@ export default function Board({ }: Props) {
   const [board, setBoard] = useState(gs.board)
   const [knowledge, setKnowledge] = useState(gs.knowledge)
   const [cboard, setCBoard] = useState(gs.cboard)
+  const [isWinModalOpen, setIsWinModalOpen] = useState(false);
+  const [isLoseModalOpen, setIsLoseModalOpen] = useState(false);
 
   const move = () => {
     let mv = gs.move();
@@ -56,6 +59,14 @@ export default function Board({ }: Props) {
 
     return () => clearInterval(interval)
   }, [gs])
+
+  useEffect(() => {
+    if (gs.gameOver && gs.youWin) {
+      setIsWinModalOpen(true);
+    } else if (gs.gameOver && gs.youLose) {
+      setIsLoseModalOpen(true);
+    }
+  }, [gs.gameOver, gs.youWin, gs.youLose]);
 
   const renderBoard = () => {
     return (
@@ -92,6 +103,16 @@ export default function Board({ }: Props) {
               </div>
             ))}
           </div>
+          <Modal
+        isOpen={isWinModalOpen}
+        message="You Win!"
+        onRequestClose={() => setIsWinModalOpen(false)}
+      />
+      <Modal
+        isOpen={isLoseModalOpen}
+        message="Game Lost!"
+        onRequestClose={() => setIsLoseModalOpen(false)}
+      />
         </div>
       </>
     )
