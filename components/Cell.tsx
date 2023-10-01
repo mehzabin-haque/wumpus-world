@@ -11,7 +11,7 @@ export default function Cell({ piece, row, col, agentPosition, isVisited }: Prop
   
   return (
     <div data-row={row} data-col={col}
-      className={`square h-16 w-16 flex items-center justify-center outline outline-[#171c28]  ${(piece==='S' && isVisited) ? 'bg-green-500' : (piece!=='S' && isVisited? 'bg-red-500' : 'bg-[#485a7f]')}`}  
+      className={`square h-16 w-16 flex items-center justify-center outline outline-[#171c28]  ${(piece==='S' && isVisited) ? 'bg-green-500' : (piece!=='S' && isVisited? 'bg-red-500' : 'bg-[#457b9d]')}`}  
     >
       {agentPosition.row === row && agentPosition.column === col && piece !== 'SG' && piece !== 'breeze' && piece !== 'stench' && piece !== 'breezestench' && <Image src={`/images/agent.png`} alt={''} width={64} height={64} />}
       {agentPosition.row === row && agentPosition.column === col && piece === 'SG' && <Image src={`/images/gold.png`} alt={''} width={64} height={64} />}
