@@ -925,3 +925,18 @@ export class GameState {
   }
 }
 
+export function generateRandomBoard(wumpusCount: number, pitCount: number, goldCount: number) {
+  for (let i = 0; i < this.wumpusCount; i++) {
+    let row, col;
+    do {
+      row = Math.floor(Math.random() * 10);
+      col = Math.floor(Math.random() * 10);
+    } while (
+      (row >= 8 && (col === 0 || col === 1)) ||
+      (row === 8 && col === 1) ||
+      this.board[row][col] === "W"
+    );
+
+    this.board[row][col] = "W";
+  }
+}

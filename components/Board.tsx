@@ -5,14 +5,11 @@ import React, { useEffect, useState } from 'react'
 import Modal from '@/components/Modal'
 import { useRouter } from 'next/router'
 
-type Props = {}
+type Props = {
+  initialBoard: (string)[][]
+}
 
-export default function Board({ }: Props) {
-  const router = useRouter()
-  const { query } = router
-
-  
-
+export default function Board({ initialBoard }: Props) {
   const [gs, setGS] = useState<GameState>(new GameState(initialBoard))
   const [board, setBoard] = useState(gs.board)
   const [knowledge, setKnowledge] = useState(gs.knowledge)
@@ -64,9 +61,9 @@ export default function Board({ }: Props) {
   const renderBoard = () => {
     return (
       <>
-        <div className='h-screen flex space-x-64 items-center justify-center bg-[#a8dadc]'>
-          <div className='bg-[#a8dadc] text-center pb-16'>
-          <p className='mb-8 text-[#1d3557] text-2xl font-bold tracking-wider'>Inspect Mode</p>
+        <div className='h-screen flex space-x-64 items-center justify-center bg-[#93032E]'>
+          <div className='bg-[#93032E] text-center pb-16'>
+            <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Inspect Mode</p>
             {cboard.map((row, rowIndex) => (
               <div className={`flex`} key={rowIndex}>
                 {row.map((piece, colIndex) => (
@@ -79,7 +76,7 @@ export default function Board({ }: Props) {
                 ))}
               </div>
             ))}
-            <div className='pt-8 text-xl font-bold text-[#1d3557] tracking-[1px] w-full flex flex-col items-start'>
+            <div className='pt-8 text-xl font-bold text-white tracking-[1px] w-full flex flex-col items-start'>
               <div className='pl-10 space-x-24'>
                 <span>Available Gold: {gs.goldCount}</span>
                 <span>Gold Collected: {gs.discoveredGold}</span>
@@ -91,7 +88,7 @@ export default function Board({ }: Props) {
             </div>
           </div>
           <div className='text-center pb-16'>
-            <p className='mb-8 text-[#1d3557] text-2xl font-bold tracking-wider'>Current Game</p>
+            <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Current Game</p>
             {board.map((row, rowIndex) => (
               <div className={`flex`} key={rowIndex}>
                 {row.map((piece, colIndex) => (
