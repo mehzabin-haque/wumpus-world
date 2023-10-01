@@ -17,6 +17,7 @@ export default function Cell({ piece, row, col, agentPosition }: Props) {
     // S = Stench
     // V = Safe
     // B = Both stench and breeze
+    //
 
     if (piece === 'P') return 'pit'
     else if (piece === 'W') return 'wumpus'
