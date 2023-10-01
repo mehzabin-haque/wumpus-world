@@ -18,15 +18,23 @@ export default function Board({ }: Props) {
     ['-', '-', '-', 'P', '-', '-', 'P', '-', '-', '-'],
     ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
   ]
-
+  
   const [gs, setGS] = useState<GameState>(new GameState(initialBoard))
   const [board, setBoard] = useState(gs.board)
   const [knowledge, setKnowledge] = useState(gs.knowledge)
+  const [cboard, setCBoard] = useState(gs.cboard)
 
   const move = () => {
     let mv = gs.move();
-    console.log(mv)
-    if (mv == gs.UP) {
+    if (mv == gs.RIGHT) {
+      gs.agentIndex.column++;
+      gs.point--;
+    }
+    else if (mv == gs.LEFT) {
+      gs.agentIndex.column--;
+      gs.point--;
+    }
+    else if (mv == gs.UP) {
       gs.agentIndex.row--;
       gs.point--;
     }
@@ -34,35 +42,28 @@ export default function Board({ }: Props) {
       gs.agentIndex.row++;
       gs.point--;
     }
-    else if (mv == gs.LEFT) {
-      gs.agentIndex.column--;
-      gs.point--;
-    }
-    else if (mv == gs.RIGHT) {
-      gs.agentIndex.column++;
-      gs.point--;
-    }
-    console.log(gs.agentIndex)
+    gs.cellVisited[gs.agentIndex.row][gs.agentIndex.column] = true;
   }
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     move()
-  //     setBoard(gs.board)
-  //     setKnowledge(gs.knowledge)
-  //     renderBoard()
-  //   }, 1000)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      move()
+      setBoard([...gs.board])
+      setKnowledge([...gs.knowledge])
+    }, 500)
+    
+    setTimeout(renderBoard, 0)
 
-  //   return () => clearInterval(interval)
-  // }, [gs])
+    return () => clearInterval(interval)
+  }, [gs])
 
   const renderBoard = () => {
     return (
       <>
-        <div className='h-screen flex space-x-16 items-center justify-center bg-[#93032E]'>
+        <div className='h-screen flex space-x-64 items-center justify-center bg-[#93032E]'>
           <div className='bg-[#93032E] text-center pb-16'>
-            <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Cheat</p>
-            {initialBoard.map((row, rowIndex) => (
+            <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Inspect Mode</p>
+            {cboard.map((row, rowIndex) => (
               <div className={`flex`} key={rowIndex}>
                 {row.map((piece, colIndex) => (
                   <Cheat
@@ -85,6 +86,7 @@ export default function Board({ }: Props) {
                     row={rowIndex}
                     col={colIndex}
                     agentPosition={gs.agentIndex}
+                    isVisited={gs.cellVisited[rowIndex][colIndex]}
                   />
                 ))}
               </div>

@@ -5,35 +5,23 @@ type Props = {
   row: number;
   col: number;
   agentPosition: { row: number, column: number};
+  isVisited: boolean;
 }
-export default function Cell({ piece, row, col, agentPosition }: Props) {
-  const getStatus = (piece: string) => {
-    // Possible knowledge values:
-    // U = Unknown
-    // W = Wumpus
-    // P = Pit
-    // G = Gold
-    // A = Breeze
-    // S = Stench
-    // V = Safe
-    // B = Both stench and breeze
-
-    if (piece === 'P') return 'pit'
-    else if (piece === 'W') return 'wumpus'
-    else if (piece === 'G') return 'gold'
-    else if (piece === 'S') return 'stench'
-    else if (piece === 'B') return 'breezestench'
-    else if (piece === 'V') return 'safe'
-    else if (piece === 'A') return 'breeze'
-  }
-
+export default function Cell({ piece, row, col, agentPosition, isVisited }: Props) {
+  
   return (
     <div data-row={row} data-col={col}
-      className={`square h-12 w-12 text-6xl flex items-center justify-center outline outline-[#171c28]  ${(piece==='V') ? 'bg-green-500' : 'bg-[#485a7f]'
-        }`}
+      className={`square h-16 w-16 flex items-center justify-center outline outline-[#171c28]  ${(piece==='S' && isVisited) ? 'bg-green-500' : (piece!=='S' && isVisited? 'bg-red-500' : 'bg-[#485a7f]')}`}  
     >
-      {((piece !== 'U') && (agentPosition.row !== row) && (agentPosition.column !== col)) && <Image src={`/images/${getStatus(piece)}.png`} alt={''} width={64} height={64} />}
-      {((agentPosition.row === row) && (agentPosition.column === col)) && <Image src={`/images/${(piece==='G') ? 'win' : getStatus(piece)}.png`} alt={''} width={64} height={64} />}
+      {agentPosition.row === row && agentPosition.column === col && piece !== 'SG' && piece !== 'breeze' && piece !== 'stench' && piece !== 'breezestench' && <Image src={`/images/agent.png`} alt={''} width={64} height={64} />}
+      {agentPosition.row === row && agentPosition.column === col && piece === 'SG' && <Image src={`/images/gold.png`} alt={''} width={64} height={64} />}
+      {agentPosition.row === row && agentPosition.column === col && piece === 'breeze' && <Image src={`/images/breeze.png`} alt={''} width={64} height={64} />}
+      {agentPosition.row === row && agentPosition.column === col && piece === 'stench' && <Image src={`/images/stench.png`} alt={''} width={64} height={64} />}
+      {agentPosition.row === row && agentPosition.column === col && piece === 'breezestench' && <Image src={`/images/breezestench.png`} alt={''} width={64} height={64} />}
+      {(agentPosition.row !== row || agentPosition.column !== col) && piece === 'SG' && <Image src={`/images/gold.png`} alt={''} width={64} height={64} />}
+      {(agentPosition.row !== row || agentPosition.column !== col) && piece === 'breeze' && <Image src={`/images/wind.png`} alt={''} width={64} height={64} />}
+      {(agentPosition.row !== row || agentPosition.column !== col) && piece === 'stench' && <Image src={`/images/waste.png`} alt={''} width={64} height={64} />}
+      {(agentPosition.row !== row || agentPosition.column !== col) && piece === 'breezestench' && <Image src={`/images/odor.png`} alt={''} width={16} height={16} />}
     </div>
   )
 }
