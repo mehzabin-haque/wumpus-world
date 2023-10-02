@@ -4,7 +4,7 @@ import Menu from '@/components/Menu'
 export default function Home() {
   return (
     <main>
-      <div className='flex h-screen items-center justify-center bg-[url("/images/background.gif")] bg-cover'>
+      <div className='flex h-screen items-center justify-center bg-[url("/images/background.gif")] bg-cover bg-no-repeat bg-center'>
         <Menu />
       </div>
     </main>
