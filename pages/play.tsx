@@ -10,7 +10,6 @@ export default function Play({ }: Props) {
   const [pit, setPit] = useState(2)
   const [gold, setGold] = useState(1)
   const [started, setStarted] = useState(false)
-  const [initialBoard, setInitialBoard] = useState<(string)[][]>([...inputBoard])
 
   let inputBoard: (string)[][] = [
     ['-', '-', '-', 'P', '-', '-', 'P', '-', '-', '-'],
@@ -24,6 +23,8 @@ export default function Play({ }: Props) {
     ['-', '-', '-', 'P', '-', '-', 'P', '-', '-', '-'],
     ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
   ]
+
+  const [initialBoard, setInitialBoard] = useState<(string)[][]>([])
 
   const changeWumpus = (value: number) => {
     setWumpus(value)
