@@ -13,7 +13,7 @@ type Props = {
 
 export default function Settings({ wumpus, changeWumpus, pit, changePit, gold, changeGold, handleButtonClick, handleFileInput }: Props) {
   return (
-    <div className={`h-screen items-center justify-center pb-32 bg-[url("/images/background.gif")] bg-cover`}>
+    <div className='bg-[#4D448B] h-screen flex flex-col items-center justify-center pb-32'>
       <div className='text-6xl font-extrabold tracking-[2px]'>
         Game Settings
       </div>

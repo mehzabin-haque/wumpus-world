@@ -73,9 +73,9 @@ export default function Board({ }: Props) {
   const renderBoard = () => {
     return (
       <>
-        <div className='h-screen flex space-x-64 items-center justify-center bg-[#a8dadc]'>
-          <div className='bg-[#a8dadc] text-center pb-16'>
-          <p className='mb-8 text-[#1d3557] text-2xl font-bold tracking-wider'>Inspect Mode</p>
+        <div className='h-screen flex space-x-64 items-center justify-center bg-[#4D448B]'>
+          <div className='bg-[#4D448B] text-center pb-16'>
+          <p className='mb-8 text-[#F5FEF9] text-2xl font-bold tracking-wider'>Inspect Mode</p>
             {cboard.map((row, rowIndex) => (
               <div className={`flex`} key={rowIndex}>
                 {row.map((piece, colIndex) => (
@@ -88,7 +88,7 @@ export default function Board({ }: Props) {
                 ))}
               </div>
             ))}
-            <div className='pt-8 text-xl font-bold text-[#1d3557] tracking-[1px] w-full flex flex-col items-start'>
+            <div className='pt-8 text-xl font-bold text-[#F5FEF9] tracking-[1px] w-full flex flex-col items-start'>
               <div className='pl-10 space-x-24'>
                 <span>Available Gold: {gs.goldCount}</span>
                 <span>Gold Collected: {gs.discoveredGold}</span>
@@ -100,7 +100,7 @@ export default function Board({ }: Props) {
             </div>
           </div>
           <div className='text-center pb-16'>
-            <p className='mb-8 text-[#1d3557] text-2xl font-bold tracking-wider'>Current Game</p>
+            <p className='mb-8 text-[#F5FEF9] text-2xl font-bold tracking-wider'>Current Game</p>
             {board.map((row, rowIndex) => (
               <div className={`flex`} key={rowIndex}>
                 {row.map((piece, colIndex) => (
