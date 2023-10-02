@@ -21,8 +21,11 @@ export default function Board({ }: Props) {
     ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
   ]
   
-
-  const [gs, setGS] = useState<GameState>(new GameState(inputBoard))
+  const router = useRouter()
+  const { data } = router.query
+  const decodedData = JSON.parse(decodeURIComponent(data!));
+  console.log(decodedData)
+  const [gs, setGS] = useState<GameState>(new GameState(decodedData))
   const [board, setBoard] = useState(gs.board)
   const [knowledge, setKnowledge] = useState(gs.knowledge)
   const [cboard, setCBoard] = useState(gs.cboard)

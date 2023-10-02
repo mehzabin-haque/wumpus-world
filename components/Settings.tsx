@@ -34,16 +34,20 @@ export default function Settings({ wumpus, changeWumpus, pit, changePit, gold, c
           <p>{gold}</p>
         </div>
       </div>
-      <div>
-        <button onClick={handleButtonClick} className='bg-white w-[320px] hover:bg-gray-300 py-2 rounded-full font-semibold text-2xl tracking-[1px]'>Start Game</button>
-      </div>
+
       <div className='flex space-x-4'>
-        <hr className="h-px my-8 bg-black border-0 " />
-        <p>or</p>
-        <hr className="h-px my-8 bg-black border-0 " />
+        <p className='my-4 font-bold text-3xl'>or</p>
       </div>
       <div>
-        
+        <input
+          className="text-2xl font-bold rounded-full bg-white"
+          type="file"
+          name="customBoard"
+          onChange={(e) => handleFileInput(e)}
+        />
+      </div>
+      <div>
+        <button onClick={handleButtonClick} className='mt-8 bg-white w-[320px] hover:bg-gray-300 py-2 rounded-full font-semibold text-2xl tracking-[1px]'>Start Game</button>
       </div>
     </div>
   )
