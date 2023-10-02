@@ -61,8 +61,8 @@ export default function Board({ initialBoard }: Props) {
   const renderBoard = () => {
     return (
       <>
-        <div className='h-screen flex space-x-64 items-center justify-center bg-[#93032E]'>
-          <div className='bg-[#93032E] text-center pb-16'>
+        <div className='h-screen flex space-x-64 items-center justify-center bg-[url("/images/background.gif")] bg-cover'>
+          <div className='text-center pb-16'>
             <p className='mb-8 text-white text-2xl font-bold tracking-wider'>Inspect Mode</p>
             {cboard.map((row, rowIndex) => (
               <div className={`flex`} key={rowIndex}>

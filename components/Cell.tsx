@@ -18,10 +18,10 @@ export default function Cell({ piece, row, col, agentPosition, isVisited }: Prop
       {agentPosition.row === row && agentPosition.column === col && piece === 'breeze' && <Image src={`/images/breeze.png`} alt={''} width={64} height={64} />}
       {agentPosition.row === row && agentPosition.column === col && piece === 'stench' && <Image src={`/images/stench.png`} alt={''} width={64} height={64} />}
       {agentPosition.row === row && agentPosition.column === col && piece === 'stenchbreeze' && <Image src={`/images/breeze_stench.png`} alt={''} width={64} height={64} />}
-      {(agentPosition.row !== row || agentPosition.column !== col) && piece === 'SG' && <Image src={`/images/gold.png`} alt={''} width={64} height={64} />}
-      {(agentPosition.row !== row || agentPosition.column !== col) && piece === 'breeze' && <Image src={`/images/wind.png`} alt={''} width={48} height={64} />}
-      {(agentPosition.row !== row || agentPosition.column !== col) && piece === 'stench' && <Image src={`/images/waste.png`} alt={''} width={48} height={64} />}
-      {(agentPosition.row !== row || agentPosition.column !== col) && piece === 'stenchbreeze' && <Image src={`/images/odor.png`} alt={''} width={48} height={64} />}
+      {(agentPosition.row !== row || agentPosition.column !== col) && isVisited && piece === 'SG' && <Image src={`/images/gold.png`} alt={''} width={64} height={64} />}
+      {(agentPosition.row !== row || agentPosition.column !== col) && isVisited && piece === 'breeze' && <Image src={`/images/wind.png`} alt={''} width={48} height={64} />}
+      {(agentPosition.row !== row || agentPosition.column !== col) && isVisited && piece === 'stench' && <Image src={`/images/waste.png`} alt={''} width={48} height={64} />}
+      {(agentPosition.row !== row || agentPosition.column !== col) && isVisited && piece === 'stenchbreeze' && <Image src={`/images/odor.png`} alt={''} width={48} height={64} />}
     </div>
   )
 }

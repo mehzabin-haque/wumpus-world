@@ -25,7 +25,7 @@ export default function Newgame({ }: Props) {
 
 
   const handleButtonClick = () => {
-    const encodedData = encodeURIComponent(JSON.stringify(initialBoard));
+    const encodedData = encodeURIComponent(JSON.stringify(initialBoard))
     router.push(`/board?data=${encodedData}`)
   }
 

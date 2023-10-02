@@ -10,7 +10,7 @@ export default function Play({ }: Props) {
   const [pit, setPit] = useState(2)
   const [gold, setGold] = useState(1)
   const [started, setStarted] = useState(false)
-  const [initialBoard, setInitialBoard] = useState<(string)[][]>([...inputBoard])
+  const router = useRouter()
 
   let inputBoard: (string)[][] = [
     ['-', '-', '-', 'P', '-', '-', 'P', '-', '-', '-'],
@@ -38,18 +38,44 @@ export default function Play({ }: Props) {
   }
 
   const handleButtonClick = () => {
-    setInitialBoard([...generateRandomBoard(wumpus, pit, gold)])
+    let initialBoard = generateRandomBoard(wumpus, pit, gold)
     setStarted(true)
+    const encodedData = encodeURIComponent(JSON.stringify(initialBoard));
+    router.push(`/board?data=${encodedData}`)
   }
 
-  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
 
-  }
+      reader.onload = (e) => {
+        if (e.target && e.target.result) {
+          const fileContent = e.target.result as string;
+          const parsedBoard = parseBoardFromFileContent(fileContent);
+          setStarted(true)
+          const encodedData = encodeURIComponent(JSON.stringify(parsedBoard));
+          router.push(`/board?data=${encodedData}`)
+        }
+      };
+
+      reader.readAsText(file);
+    }
+  };
+
+  const parseBoardFromFileContent = (content: string): string[][] | null => {
+    // You need to implement your own logic to parse the file content into a board array.
+    // This depends on the format of the file you expect.
+    // For example, if your file contains rows of characters separated by newlines:
+    // You can split the content by newlines and then split each row into an array of characters.
+    const rows = content.split('\n');
+    const board = rows.map((row) => row.trim().split(''));
+    console.log(board);
+    return board;
+  };
 
   return (
     <div className='bg-[url("/images/background.gif")] bg-cover'>
-      (started) ? <Board initialBoard={initialBoard} />
-      :
       <Settings
         wumpus={wumpus} changeWumpus={changeWumpus}
         pit={pit} changePit={changePit}
@@ -126,5 +152,6 @@ function generateRandomBoard(wumpusCount: number, pitCount: number, goldCount: n
     board[row][col] += 'G'
   }
 
+  console.log(board)
   return board;
 }
