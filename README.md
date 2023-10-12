@@ -1,40 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Wumpus World AI Adventure
 
-## Getting Started
+## Description
 
-First, run the development server:
+Wumpus World AI Adventure is an engaging and educational game developed using Next.js that challenges players with a complex and strategic puzzle, all while showcasing the power of artificial intelligence. In this modern interpretation of the classic Wumpus World game, players watch as an AI agent, equipped with various algorithms and knowledge, traverses a mysterious cave filled with hidden dangers and rewards.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun run dev
-```
+## Game Mechanics
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Grid-Based Exploration:** The game world is represented as a grid of interconnected rooms, with each room containing different elements such as pits, the elusive Wumpus, and the coveted treasure.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+**AI Agent:** Players don't directly control a character but instead observe an AI agent's movements. The AI agent uses advanced pathfinding and search algorithms to make informed decisions and avoid hazards while seeking the treasure.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+**Knowledge Representation:** The AI agent maintains a knowledge base, updating it as it explores the environment and deduces the locations of dangers and treasures based on sensory input.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+**Game Objective:** The primary objective is for the AI agent to safely navigate through the maze, locate the treasure, and exit without falling into pits or encountering the Wumpus. The player's role is to understand and appreciate the AI's decision-making processes.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Scoring System:** The player can track the AI agent's performance through a scoring system that takes into account the number of moves, the time taken, and the number of arrows used to fend off the Wumpus.
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+**Interactive UI:** The game is presented through a user-friendly, interactive interface built with Next.js, offering real-time updates on the AI agent's status and actions.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Customizable AI:** Players can choose from various AI algorithms and strategies to see how different approaches impact the agent's success in the game.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**Educational Elements:** The game provides information about the AI algorithms and techniques used, making it a valuable educational tool for learning about AI concepts like search, reasoning, and decision-making.
 
-## Deploy on Vercel
+**Challenging Levels:** Players can progress through increasingly complex levels with larger maps, more hazards, and additional constraints to make the game more challenging.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Wumpus World AI Adventure is not only an enjoyable and immersive gaming experience but also a fantastic way to learn about the power of AI and its practical applications. It's an excellent platform for players to explore and understand the fascinating world of artificial intelligence in a fun and interactive way.
