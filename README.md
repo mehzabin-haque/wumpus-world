@@ -1,5 +1,5 @@
 # Wumpus World AI Adventure
-
+        
 ## Description
 
 Wumpus World AI Adventure is an engaging and educational game developed using Next.js that challenges players with a complex and strategic puzzle, all while showcasing the power of artificial intelligence. In this modern interpretation of the classic Wumpus World game, players watch as an AI agent, equipped with various algorithms and knowledge, traverses a mysterious cave filled with hidden dangers and rewards.
